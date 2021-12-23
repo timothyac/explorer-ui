@@ -3,6 +3,40 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    Hello explorer
+    <div id="system-reserves" class="bar-graph-container">
+      <h5 class="bar-graph-header">
+        system reserves: <span id="system-reserves-percent">56%</span>
+      </h5>
+      <div class="bar-graph">
+        <div class="bar"></div>
+      </div>
+    </div>
   </body>
+  <script type="module">
+    const sysRes = document.getElementById("system-reserves");
+
+    function setPercentOfBarGraph(barGraph = "", pct = 0) {
+      if (!barGraph) return new Error("Missing bar graph selector");
+      const barGraphPct = barGraph.querySelector("span");
+      const barGraphBar = barGraph.querySelector(".bar");
+
+      if (!barGraph || !barGraphBar || !barGraphPct) return;
+
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          barGraphPct.innerText = `${pct}%`;
+          barGraphBar.style.height = `${pct}%`;
+          resolve();
+        }, 2000);
+      });
+    }
+
+    setPercentOfBarGraph(sysRes, 45)
+      .then(() => setPercentOfBarGraph(sysRes, 21))
+      .then(() => setPercentOfBarGraph(sysRes, 73))
+      .then(() => setPercentOfBarGraph(sysRes, 36))
+      .then(() => setPercentOfBarGraph(sysRes, 94))
+      .then(() => setPercentOfBarGraph(sysRes, 78))
+      .then(() => setPercentOfBarGraph(sysRes, 87));
+  </script>
 </html>

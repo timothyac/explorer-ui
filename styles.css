@@ -74,3 +74,44 @@ html {
   color: #fff;
   background-color: #151517;
 }
+
+:root {
+  --faded-white: #ffffffbd;
+  --astra-pink: #ffb8ba;
+  --stellar-purple: #4a4857;
+}
+
+.bar-graph-container {
+  padding: 4px;
+}
+
+.bar-graph-header {
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  color: var(--faded-white);
+  text-shadow: 0 0 4px #fff;
+  padding: 0 0 2px 2px;
+}
+
+.bar-graph {
+  border: 3px solid var(--faded-white);
+  border-radius: 2px;
+  -webkit-box-shadow: 0px 0px 2px 1px var(--faded-white);
+  box-shadow: 0px 0px 2px 1px var(--faded-white);
+  height: 100px;
+  width: 300px;
+
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.bar {
+  width: 100%;
+  height: 56%;
+  border-top: 3px solid var(--faded-white);
+  background-color: var(--stellar-purple);
+  transition: height 1s ease-in-out;
+
+  -webkit-box-shadow: 0px -1px 2px 1px var(--faded-white);
+  box-shadow: 0px -1px 2px 1px var(--faded-white);
+}
