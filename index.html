@@ -10,38 +10,27 @@
     </div>
     <div id="system-reserves" class="bar-graph-container">
       <h5 class="bar-graph-header">
-        system reserves: <span id="system-reserves-percent">56%</span>
+        system reserves: <span id="system-reserves-percent"></span>
       </h5>
       <div class="bar-graph">
         <div class="bar"></div>
       </div>
     </div>
+    <div id="primary-thruster" class="thruster-graph-container">
+      <h5 class="bar-graph-header">primary thruster output</h5>
+      <div class="thruster-graph">
+        <div class="thruster"></div>
+        <div class="threshold" style="width: 50px"></div>
+        <div class="threshold" style="width: 50px"><span>200</span></div>
+        <div class="threshold" style="width: 50px"></div>
+        <div class="threshold" style="width: 75px"><span>400</span></div>
+        <div class="threshold" style="width: 75px"></div>
+        <div class="threshold" style="width: 100px"><span>600</span></div>
+        <div class="threshold" style="width: 100px"></div>
+        <div class="threshold" style="width: 125px"><span>800</span></div>
+        <div class="threshold" style="width: 125px"></div>
+        <div class="threshold" style="width: 150px"><span>1000</span></div>
+      </div>
+    </div>
   </body>
-  <script type="module">
-    const sysRes = document.getElementById("system-reserves");
-
-    function setPercentOfBarGraph(barGraph = "", pct = 0) {
-      if (!barGraph) return new Error("Missing bar graph selector");
-      const barGraphPct = barGraph.querySelector("span");
-      const barGraphBar = barGraph.querySelector(".bar");
-
-      if (!barGraph || !barGraphBar || !barGraphPct) return;
-
-      return new Promise((resolve, reject) => {
-        setTimeout(() => {
-          barGraphPct.innerText = `${pct}%`;
-          barGraphBar.style.height = `${pct}%`;
-          resolve();
-        }, 2000);
-      });
-    }
-
-    setPercentOfBarGraph(sysRes, 45)
-      .then(() => setPercentOfBarGraph(sysRes, 21))
-      .then(() => setPercentOfBarGraph(sysRes, 73))
-      .then(() => setPercentOfBarGraph(sysRes, 36))
-      .then(() => setPercentOfBarGraph(sysRes, 94))
-      .then(() => setPercentOfBarGraph(sysRes, 78))
-      .then(() => setPercentOfBarGraph(sysRes, 87));
-  </script>
 </html>

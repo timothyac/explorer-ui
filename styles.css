@@ -140,8 +140,134 @@ html {
   height: 56%;
   border-top: 3px solid var(--faded-white);
   background-color: var(--stellar-purple);
-  transition: height 1s ease-in-out;
 
   -webkit-box-shadow: 0px -1px 2px 1px var(--faded-white);
   box-shadow: 0px -1px 2px 1px var(--faded-white);
+
+  animation: bar-expanding 5s infinite alternate ease-in-out;
+}
+
+.thruster-graph-container {
+  padding: 4px;
+}
+
+.thruster-graph {
+  border: 3px solid var(--faded-white);
+  border-radius: 2px;
+  -webkit-box-shadow: 0px 0px 2px 1px var(--faded-white);
+  box-shadow: 0px 0px 2px 1px var(--faded-white);
+
+  height: 125px;
+  width: 830px;
+
+  display: flex;
+}
+
+.threshold {
+  height: 100%;
+  width: 50px;
+  border-right: 3px solid var(--faded-white);
+  -webkit-box-shadow: 0px 0px 2px 1px var(--faded-white);
+  box-shadow: 0px 0px 2px 1px var(--faded-white);
+  z-index: 6;
+
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.threshold span {
+  color: var(--faded-white);
+  text-shadow: 0 0 4px #fff;
+  padding-left: 4px;
+  font-size: 12px;
+}
+
+.threshold:last-child {
+  border: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+.thruster {
+  position: absolute;
+  margin-top: 16px;
+  height: 85px;
+  max-width: 824px;
+
+  background-color: var(--astra-pink);
+  -webkit-box-shadow: 0px 0px 2px 1px var(--astra-pink);
+  box-shadow: 0px 0px 2px 1px var(--astra-pink);
+
+  z-index: 5;
+  animation: thruster-expanding 5s ease-in-out infinite;
+  animation-fill-mode: forwards;
+}
+
+/* Chrome for the win ?? */
+@property --num {
+  syntax: "<integer>";
+  initial-value: 0;
+  inherits: false;
+}
+#system-reserves-percent {
+  animation: counter 5s infinite alternate ease-in-out;
+  counter-reset: num var(--num);
+}
+
+#system-reserves-percent::after {
+  content: counter(num) "%";
+}
+
+@keyframes counter {
+  0% {
+    --num: 10;
+  }
+  20% {
+    --num: 30;
+  }
+  40% {
+    --num: 50;
+  }
+  80% {
+    --num: 30;
+  }
+  100% {
+    --num: 90;
+  }
+}
+
+@keyframes bar-expanding {
+  0% {
+    height: 10%;
+  }
+  20% {
+    height: 30%;
+  }
+  40% {
+    height: 50%;
+  }
+  80% {
+    height: 30%;
+  }
+  100% {
+    height: 90%;
+  }
+}
+
+@keyframes thruster-expanding {
+  0% {
+    width: 700px;
+  }
+  20% {
+    width: 600px;
+  }
+  40% {
+    width: 720px;
+  }
+  80% {
+    width: 670px;
+  }
+  100% {
+    width: 700px;
+  }
 }
